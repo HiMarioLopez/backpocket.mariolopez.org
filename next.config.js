@@ -3,10 +3,8 @@ module.exports = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "res.cloudinary.com",
-        port: "",
-        pathname: "/my-account/**",
-        search: "",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
       },
     ],
   },

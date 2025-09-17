@@ -1,31 +1,46 @@
-# Next.js & Cloudinary example app
+# Backpocket
 
-This example shows how to create an image gallery site using Next.js, [Cloudinary](https://cloudinary.com), and [Tailwind](https://tailwindcss.com).
+This is my own version of the now dead [Pocket](https://getpocket.com/farewell) service. Only I can store things in my backpocket - all can peruse, though. Uses a modified Next.js image gallery that fetches images from Unsplash API.
 
-## Deploy your own
+## Getting started
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or view the demo [here](https://nextconf-images.vercel.app/)
+1. Get an Unsplash API key from [Unsplash Developers](https://unsplash.com/developers)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-cloudinary&project-name=nextjs-image-gallery&repository-name=with-cloudinary&env=NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,CLOUDINARY_API_KEY,CLOUDINARY_API_SECRET,CLOUDINARY_FOLDER&envDescription=API%20Keys%20from%20Cloudinary%20needed%20to%20run%20this%20application.)
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+2. Create a `.env.local` file and add your API key:
 
 ```bash
-npx create-next-app --example with-cloudinary with-cloudinary-app
+UNSPLASH_ACCESS_KEY=your_access_key_here
 ```
+
+3. Install dependencies:
 
 ```bash
-yarn create next-app --example with-cloudinary with-cloudinary-app
+pnpm install
 ```
+
+4. Run the development server:
 
 ```bash
-pnpm create next-app --example with-cloudinary with-cloudinary-app
+pnpm run dev
 ```
 
-## References
+## Caching
 
-- Cloudinary API: https://cloudinary.com/documentation/transformation_reference
+The app caches Unsplash images for 24 hours to avoid hitting API rate limits. The cache is stored locally in `.unsplash-cache.json`.
+
+### Clearing the Cache
+
+To force fresh images from Unsplash:
+
+```bash
+# Option 1: Delete the cache file
+rm .unsplash-cache.json
+
+# Option 2: Use the utility function (if you add it to a script)
+node -e "require('./utils/unsplashCache').clearUnsplashCache()"
+```
+
+The cache will automatically refresh after 24 hours or when you rebuild the app.
+
+---
+Made with ❤️ while wearing a pair of pants with pockets 👖

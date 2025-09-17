@@ -1,10 +1,14 @@
 /* eslint-disable no-unused-vars */
 export interface ImageProps {
   id: number;
-  height: string;
-  width: string;
-  public_id: string;
-  format: string;
+  height: number;
+  width: number;
+  unsplash_id: string;
+  urls: {
+    full: string;
+    regular: string;
+    small: string;
+  };
   blurDataUrl?: string;
 }
 
